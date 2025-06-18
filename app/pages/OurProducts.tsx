@@ -75,11 +75,10 @@ export default function OurProducts() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <button
               onClick={() => setSelectedCategory(null)}
-              className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-                selectedCategory === null
+              className={`p-4 rounded-xl border-2 transition-all duration-300 ${selectedCategory === null
                   ? "border-yellow-500 bg-yellow-50 text-yellow-700"
                   : "border-gray-200 hover:border-yellow-300 hover:bg-yellow-50"
-              }`}
+                }`}
             >
               <Grid className="w-8 h-8 mx-auto mb-2" />
               <span className="text-sm font-semibold">All Products</span>
@@ -128,13 +127,13 @@ export default function OurProducts() {
               <motion.div
                 key={product.id}
                 variants={fadeInUp}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden h-full flex flex-col"
               >
                 <div className="relative">
                   <img
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full min-h-48 max-h-48 object-cover"
                   />
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
@@ -148,22 +147,23 @@ export default function OurProducts() {
                   </div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
 
-                  <div className="space-y-2">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-semibold">Composition:</span> {product.composition.substring(0, 80)}...
+                  <div className="space-y-2 text-sm text-gray-600 mt-2 flex-1">
+                    <p>
+                      <span className="font-semibold">Composition:</span>{" "}
+                      {product.composition.substring(0, 80)}...
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p>
                       <span className="font-semibold">Packing:</span> {product.packing}
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p>
                       <span className="font-semibold">Countries:</span> {product.registeredCountries}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-100">
+                  <div className="pt-4 mt-auto border-t border-gray-100">
                     <Link
                       to={`/products/our-products/${product.type.toLowerCase()}/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
                       className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 px-4 rounded-lg font-semibold text-center block hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
@@ -172,6 +172,7 @@ export default function OurProducts() {
                     </Link>
                   </div>
                 </div>
+
               </motion.div>
             ))}
           </motion.div>

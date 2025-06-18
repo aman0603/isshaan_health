@@ -70,8 +70,8 @@ export default function Footer() {
               <Link to ="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("genericProducts")}
               </Link>
-              <Link to="/products/our-products" onScroll={() => window.scrollTo(0, 0)} className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                {t("brandProducts")}
+              <Link to="/products/our-products"  className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+                {t("Our Products")}
               </Link>
     
             </div>
