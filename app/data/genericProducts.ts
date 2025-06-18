@@ -1,0 +1,92 @@
+export const genericProducts = [
+  {
+    SNo: 1,
+    Product: "ACECLOFENAC & PARACETAMOL TABLETS",
+    Composition: "100 MG + 500 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 2,
+    Product: "AMOXICILLIN & CLAVULANIC ACID TABLETS",
+    Composition: "625 MG",
+    Packing: "10x6 Alu-Alu Tab",
+  },
+  {
+    SNo: 3,
+    Product: "ATORVASTATIN CALCIUM TABLETS",
+    Composition: "10 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 4,
+    Product: "AZITHROMYCIN TABLETS",
+    Composition: "500 MG",
+    Packing: "10x3 Alu-Alu Tab",
+  },
+  {
+    SNo: 5,
+    Product: "CETIRIZINE HYDROCHLORIDE TABLETS",
+    Composition: "10 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 6,
+    Product: "DICLOFENAC SODIUM TABLETS",
+    Composition: "50 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 7,
+    Product: "METFORMIN HYDROCHLORIDE TABLETS",
+    Composition: "500 MG",
+    Packing: "10x15 Alu-Alu Tab",
+  },
+  {
+    SNo: 8,
+    Product: "OMEPRAZOLE CAPSULES",
+    Composition: "20 MG",
+    Packing: "10x10 Alu-Alu Cap",
+  },
+  {
+    SNo: 9,
+    Product: "PARACETAMOL TABLETS",
+    Composition: "500 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 10,
+    Product: "RANITIDINE HYDROCHLORIDE TABLETS",
+    Composition: "150 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 11,
+    Product: "CIPROFLOXACIN TABLETS",
+    Composition: "500 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 12,
+    Product: "DOXYCYCLINE CAPSULES",
+    Composition: "100 MG",
+    Packing: "10x10 Alu-Alu Cap",
+  },
+  {
+    SNo: 13,
+    Product: "IBUPROFEN TABLETS",
+    Composition: "400 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 14,
+    Product: "LOSARTAN POTASSIUM TABLETS",
+    Composition: "50 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+  {
+    SNo: 15,
+    Product: "PANTOPRAZOLE TABLETS",
+    Composition: "40 MG",
+    Packing: "10x10 Alu-Alu Tab",
+  },
+]
