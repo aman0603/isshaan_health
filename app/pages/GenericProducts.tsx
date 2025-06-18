@@ -11,6 +11,9 @@ export default function GenericProducts() {
   const [searchTerm, setSearchTerm] = useState("")
   const [filteredProducts, setFilteredProducts] = useState(genericProducts)
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10 // You can adjust this
+
   const handleSearch = (term: string) => {
     setSearchTerm(term)
     const filtered = genericProducts.filter(
@@ -19,6 +22,20 @@ export default function GenericProducts() {
         item.Composition.toLowerCase().includes(term.toLowerCase()),
     )
     setFilteredProducts(filtered)
+    setCurrentPage(1) // Reset to first page when searching
+  }
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = filteredProducts.slice(indexOfFirstItem, indexOfLastItem)
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page)
+      window.scrollTo({ top: 0, behavior: "smooth" }) // Optional: scroll to top
+    }
   }
 
   return (
@@ -92,7 +109,7 @@ export default function GenericProducts() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   <AnimatePresence>
-                    {filteredProducts.map((product, index) => (
+                    {currentItems.map((product, index) => (
                       <motion.tr
                         key={product.SNo}
                         initial={{ opacity: 0, y: 20 }}
@@ -118,6 +135,41 @@ export default function GenericProducts() {
                 </div>
               )}
             </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-2 py-6 bg-white">
+                <button
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 border rounded-full text-sm bg-gray-100 hover:bg-yellow-100 disabled:opacity-50"
+                >
+                  Prev
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`px-4 py-2 border rounded-full text-sm ${
+                      currentPage === page
+                        ? "bg-yellow-500 text-white"
+                        : "bg-gray-100 hover:bg-yellow-100"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 border rounded-full text-sm bg-gray-100 hover:bg-yellow-100 disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

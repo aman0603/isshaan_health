@@ -297,7 +297,7 @@ export default function Distributors() {
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-                <p className="text-yellow-100">partnerships@pharmaex.com</p>
+                <p className="text-yellow-100">partnerships@isshaan.com</p>
               </div>
 
               <div className="text-center">

@@ -71,7 +71,7 @@ export default function About() {
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
               {t("about")}{" "}
               <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                PharmaEx
+                Ishaan
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -104,7 +104,7 @@ export default function About() {
               className="space-y-6"
             >
               <p className="text-lg text-gray-600 leading-relaxed">
-                Founded in 1995, PharmaEx has grown from a small pharmaceutical startup to a globally recognized leader
+                Founded in 1995, Isshaan has grown from a small pharmaceutical startup to a globally recognized leader
                 in healthcare innovation. Our commitment to quality, research, and patient care has driven us to develop
                 life-changing medications that serve millions of patients worldwide.
               </p>

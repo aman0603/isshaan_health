@@ -15,10 +15,10 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
+                <span className="text-white font-bold text-xl">I</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                PharmaEx
+                sshaan
               </span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -55,12 +55,6 @@ export default function Footer() {
                 {t("about")}
               </Link>
               <Link
-                to="/products"
-                className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm"
-              >
-                {t("products")}
-              </Link>
-              <Link
                 to="/distributors"
                 className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm"
               >
@@ -73,18 +67,13 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow-400">Products</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link to ="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("genericProducts")}
-              </a>
-              <a href="#" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              </Link>
+              <Link to="/products/our-products" onScroll={() => window.scrollTo(0, 0)} className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("brandProducts")}
-              </a>
-              <a href="#" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                Tablets
-              </a>
-              <a href="#" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                Syrups
-              </a>
+              </Link>
+    
             </div>
           </div>
 
@@ -108,7 +97,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                <p className="text-gray-300 text-sm">info@pharmaex.com</p>
+                <p className="text-gray-300 text-sm">info@isshaan.com</p>
               </div>
             </div>
           </div>
@@ -116,7 +105,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">© 2024 PharmaEx. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© 2024 Isshaan. All rights reserved.</p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 Privacy Policy

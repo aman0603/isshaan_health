@@ -15,11 +15,13 @@ import Contact from "./pages/Contact"
 import Career from "./pages/Career"
 import ProductDetail from "./pages/ProductDetail"
 import "./globals.css"
+import ScrollToTop from "./components/ScrollToTop"
 
 export default function App() {
   return (
     <LanguageProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-white">
           <Navbar />
           <main>
@@ -38,6 +40,7 @@ export default function App() {
           </main>
           <Footer />
         </div>
+       
       </Router>
     </LanguageProvider>
   )
