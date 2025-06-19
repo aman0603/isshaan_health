@@ -64,7 +64,7 @@ export default function Footer() {
                 {t("genericProducts")}
               </Link>
               <Link href="/products/our-products" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                {t("Our Products")}
+                {t("ourProducts")}
               </Link>
             </div>
           </div>

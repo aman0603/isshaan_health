@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { Search, Package } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 
-
 import {
   tablet,
   capsule,
@@ -191,8 +190,9 @@ export default function GenericProducts() {
                 disabled={currentPage === totalPages}
                 className="px-4 py-2 rounded-full border bg-white text-gray-700 hover:bg-yellow-100 disabled:opacity-50"
               >
-                Next »
+                Next »              
               </button>
+            
             </div>
           </div>
         </div>

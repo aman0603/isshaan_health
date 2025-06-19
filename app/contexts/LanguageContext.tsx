@@ -29,7 +29,7 @@ const translations = {
     qualityText:
       "We maintain the highest standards of quality control and regulatory compliance in all our operations.",
     genericProducts: "Generic Products",
-    brandProducts: "Brand Products",
+    ourProduct: "Our Products",
     searchProducts: "Search products...",
     becomeDistributor: "Become a Distributor",
     distributorText:
@@ -68,7 +68,7 @@ const translations = {
     qualityText:
       "Мы поддерживаем высочайшие стандарты контроля качества и соответствия нормативным требованиям во всех наших операциях.",
     genericProducts: "Дженерики",
-    brandProducts: "Брендовые продукты",
+    ourProducts: "Наши продукты",
     searchProducts: "Поиск продуктов...",
     becomeDistributor: "Стать дистрибьютором",
     distributorText:
@@ -107,7 +107,7 @@ const translations = {
     qualityText:
       "Nous maintenons les plus hauts standards de contrôle qualité et de conformité réglementaire dans toutes nos opérations.",
     genericProducts: "Produits génériques",
-    brandProducts: "Produits de marque",
+    ourProducts: "Nos produits",
     searchProducts: "Rechercher des produits...",
     becomeDistributor: "Devenir distributeur",
     distributorText:
@@ -146,7 +146,7 @@ const translations = {
     qualityText:
       "Mantenemos los más altos estándares de control de calidad y cumplimiento regulatorio en todas nuestras operaciones.",
     genericProducts: "Productos genéricos",
-    brandProducts: "Productos de marca",
+    ourProducts: "Nuestros productos",
     searchProducts: "Buscar productos...",
     becomeDistributor: "Convertirse en distribuidor",
     distributorText:

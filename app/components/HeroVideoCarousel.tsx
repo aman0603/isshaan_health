@@ -26,14 +26,14 @@ export default function HeroVideoCarousel() {
           muted
           loop
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 pt-4 ${
             index === currentIndex ? "opacity-100 z-0" : "opacity-0 z-0"
           }`}
         />
       ))}
 
       {/* Stronger Yellow Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 via-yellow-100 to-yellow-300 opacity-80 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-50 via-white to-yellow-150 opacity-80 z-10"></div>
     </div>
   )
 }

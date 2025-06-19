@@ -6,7 +6,6 @@ import { ChevronLeft, ChevronRight, Search } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { commerciallyAvailableProducts } from "@/data/commerciallyAvailableProducts"
-
 const PRODUCTS_PER_PAGE = 15
 
 export default function OurProducts() {
@@ -21,6 +20,7 @@ export default function OurProducts() {
     setSearchTerm(e.target.value)
     setCurrentPage(1)
   }
+  
 
   const filteredProducts = commerciallyAvailableProducts.filter((product) => {
     const matchCategory = selectedCategory ? product.type === selectedCategory : true
