@@ -14,12 +14,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">I</span>
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                sshaan
-              </span>
+              <img
+                src="/logo.png"
+                alt="Isshaan Logo"
+                className="w-25 h-25 object-contain rounded-lg"
+              />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               Leading pharmaceutical company committed to improving global health through innovative medicines and
@@ -54,12 +53,12 @@ export default function Footer() {
               >
                 {t("about")}
               </Link>
-              <Link
+              {/* <Link
                 to="/distributors"
                 className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm"
               >
                 {t("distributors")}
-              </Link>
+              </Link> */}
             </div>
           </div>
 
@@ -67,13 +66,12 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow-400">Products</h3>
             <div className="space-y-2">
-              <Link to ="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link to="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("genericProducts")}
               </Link>
-              <Link to="/products/our-products"  className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link to="/products/our-products" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("Our Products")}
               </Link>
-    
             </div>
           </div>
 
@@ -84,16 +82,16 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0" />
                 <p className="text-gray-300 text-sm">
-                  123 Pharma Street
+                  G-94, G Block, Sector 63
                   <br />
-                  Medical District
+                  Noida
                   <br />
-                  New York, NY 10001
+                  Uttar Pradesh 201301
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-                <p className="text-gray-300 text-sm">+1 (555) 123-4567</p>
+                <p className="text-gray-300 text-sm">+91 9560797536</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-yellow-400 flex-shrink-0" />
@@ -103,22 +101,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">© 2024 Isshaan. All rights reserved.</p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 text-sm">
-                Cookie Policy
-              </a>
-            </div>
-          </div>
-        </div>
+    
       </div>
     </footer>
   )

@@ -21,34 +21,29 @@ export default function About() {
     },
   }
 
-  const timeline = [
-    { year: "1995", event: "Company founded with a vision to improve global healthcare" },
-    { year: "2000", event: "First international expansion to European markets" },
-    { year: "2005", event: "Achieved ISO 9001:2015 certification for quality management" },
-    { year: "2010", event: "Launched innovative research and development division" },
-    { year: "2015", event: "Expanded to 25+ countries worldwide" },
-    { year: "2020", event: "Reached milestone of 100+ pharmaceutical products" },
-    { year: "2024", event: "Leading pharmaceutical company with global presence" },
-  ]
+const timeline = [
+  { year: "2007", event: "Isshaan Healthcare was founded with a vision to deliver high-quality, affordable medicines." },
+  { year: "2010", event: "Entered the CIS (Commonwealth of Independent States) region with strategic partnerships and product registrations." },
+  { year: "2013", event: "Expanded product line to include 50+ generics across major therapeutic segments." },
+  { year: "2016", event: "Marked significant presence in African markets, focusing on WHO-compliant formulations." },
+  { year: "2019", event: "Commenced operations in Southeast Asia, with Cambodia as a key export destination." },
+  { year: "2022", event: "Crossed 100+ product approvals across regulated and semi-regulated markets." },
+  { year: "2024", event: "Established as a trusted global exporter in 20+ countries with a strong distribution network." },
+]
+
 
   const leadership = [
     {
-      name: "Dr. Sarah Johnson",
-      position: "Chief Executive Officer",
-      image: "/placeholder.svg?height=300&width=300",
+      name: "Arvind Kumar",
+      position: "Operation head",
+      image: "/bhaia.jpg",
       bio: "Over 20 years of experience in pharmaceutical industry leadership.",
     },
     {
-      name: "Dr. Michael Chen",
-      position: "Chief Scientific Officer",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "Leading researcher with 15+ years in drug development and clinical trials.",
-    },
-    {
-      name: "Lisa Rodriguez",
-      position: "Chief Operating Officer",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "Expert in global operations and supply chain management.",
+      name: "Shubhaankar Sonnjay Singh",
+      position: "Managagement Team",
+      image: "/bhaia.jpg",
+      bio: "Kuch toh ho",
     },
   ]
 
@@ -71,11 +66,11 @@ export default function About() {
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
               {t("about")}{" "}
               <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                Ishaan
+                ISSHAAN
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Pioneering pharmaceutical excellence for over 25 years, dedicated to improving lives through innovative
+              Pioneering pharmaceutical excellence for over 20 years, dedicated to improving lives through innovative
               healthcare solutions.
             </p>
           </motion.div>
@@ -104,33 +99,24 @@ export default function About() {
               className="space-y-6"
             >
               <p className="text-lg text-gray-600 leading-relaxed">
-                Founded in 1995, Isshaan has grown from a small pharmaceutical startup to a globally recognized leader
-                in healthcare innovation. Our commitment to quality, research, and patient care has driven us to develop
-                life-changing medications that serve millions of patients worldwide.
+               
+
+Founded in 2007, Isshaan has evolved from a modest pharmaceutical venture into a trusted name in global healthcare. Guided by a strong commitment to quality, innovation, and patient well-being, we have developed a diverse range of life-enhancing medicines that support millions of lives across the world.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                With state-of-the-art manufacturing facilities and a dedicated team of scientists, researchers, and
-                healthcare professionals, we continue to push the boundaries of pharmaceutical science to address unmet
-                medical needs.
+               With state-of-the-art manufacturing facilities and a dedicated team of healthcare professionals, we continue to push the boundaries of pharmaceutical science to address unmet medical needs.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mt-8">
                 <div className="text-center p-6 bg-gradient-to-br from-yellow-50 to-white rounded-xl">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">100+</div>
+                  <div className="text-3xl font-bold text-yellow-600 mb-2">300+</div>
                   <div className="text-gray-600">Products</div>
                 </div>
                 <div className="text-center p-6 bg-gradient-to-br from-yellow-50 to-white rounded-xl">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">25+</div>
+                  <div className="text-3xl font-bold text-yellow-600 mb-2">20+</div>
                   <div className="text-gray-600">Countries</div>
                 </div>
-                <div className="text-center p-6 bg-gradient-to-br from-yellow-50 to-white rounded-xl">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">500+</div>
-                  <div className="text-gray-600">Employees</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-yellow-50 to-white rounded-xl">
-                  <div className="text-3xl font-bold text-yellow-600 mb-2">1M+</div>
-                  <div className="text-gray-600">Patients Served</div>
-                </div>
+              
               </div>
             </motion.div>
 
@@ -264,47 +250,48 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-yellow-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t("leadership")}</h2>
-          </motion.div>
+   {/* Leadership Team */}
+<section className="py-20 bg-gradient-to-br from-gray-50 to-yellow-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{t("leadership")}</h2>
+    </motion.div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {leadership.map((leader, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
-              >
-                <img
-                  src={leader.image || "/placeholder.svg"}
-                  alt={leader.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-100"
-                />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{leader.name}</h3>
-                <p className="text-yellow-600 font-semibold mb-4">{leader.position}</p>
-                <p className="text-gray-600 leading-relaxed">{leader.bio}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Certifications */}
+    <div className="flex flex-wrap justify-center gap-8">
+      {leadership.map((leader, index) => (
+        <motion.div
+          key={index}
+          variants={{
+            initial: { opacity: 0, y: 30 },
+            animate: { opacity: 1, y: 0 }
+          }}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+          className="w-full sm:w-2/3 md:w-1/3 lg:w-1/4 bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
+        >
+          <img
+            src={`/${leader.image || "placeholder.svg"}`}
+            alt={leader.name}
+            className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-100"
+            onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
+          />
+          <h3 className="text-2xl font-bold text-gray-900 mb-2">{leader.name}</h3>
+          <p className="text-yellow-600 font-semibold mb-4">{leader.position}</p>
+          <p className="text-gray-600 leading-relaxed">{leader.bio}</p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+   {/* Certifications */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div

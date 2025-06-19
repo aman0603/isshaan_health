@@ -41,9 +41,9 @@ export default function Navbar() {
         { name: "Our Products", path: "/products/our-products" },
       ],
     },
-    { name: t("distributors"), path: "/distributors" },
+    // { name: t("distributors"), path: "/distributors" },
     { name: t("contact"), path: "/contact" },
-    { name: t("career"), path: "/career" },
+    // { name: t("career"), path: "/career" },
   ]
 
   return (
@@ -58,12 +58,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">I</span>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-              sshaan
-            </span>
+            <img
+              src="/logo.png"
+              alt="Isshaan Healthcare Logo"
+              className="w-25 h-25 object-contain rounded-lg"
+            />
           </Link>
 
           {/* Desktop Navigation */}

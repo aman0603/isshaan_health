@@ -23,11 +23,10 @@ export default function ProductDetail() {
   const navigate = useNavigate()
   const { t } = useLanguage()
 
-  // Find product by name and category
   const product = commerciallyAvailableProducts.find(
     (p) =>
       p.type.toLowerCase() === category?.toLowerCase() &&
-      p.name.toLowerCase().replace(/\s+/g, "-") === productName?.toLowerCase(),
+      p.name.toLowerCase().replace(/\s+/g, "-") === productName?.toLowerCase()
   )
 
   if (!product) {
@@ -62,7 +61,7 @@ export default function ProductDetail() {
 
   return (
     <div className="pt-16 bg-gray-50 min-h-screen">
-      {/* Header */}
+      {/* Breadcrumb */}
       <section className="py-8 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-4">
@@ -93,11 +92,11 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Product Overview */}
+      {/* Main Product Overview */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Product Image */}
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -106,16 +105,15 @@ export default function ProductDetail() {
             >
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <img
-                  src={product.image || "/placeholder.svg"}
+                  src={`/${product.image || "placeholder.svg"}`}
+                  onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
                   alt={product.name}
                   className="w-full h-96 object-contain rounded-lg"
                 />
                 <div className="absolute top-4 right-4">
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                      product.status === "Registered" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
-                    }`}
-                  >
+                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                    product.status === "Registered" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
+                  }`}>
                     {product.status}
                   </span>
                 </div>
@@ -127,7 +125,7 @@ export default function ProductDetail() {
               </div>
             </motion.div>
 
-            {/* Product Info */}
+            {/* Details */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -140,60 +138,21 @@ export default function ProductDetail() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                  <Package className="w-6 h-6 text-yellow-500" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">Packing</p>
-                    <p className="text-gray-600">{product.packing}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                  <Calendar className="w-6 h-6 text-yellow-500" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">Shelf Life</p>
-                    <p className="text-gray-600">{product.shelfLife}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">Status</p>
-                    <p className="text-gray-600">{product.status}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                  <MapPin className="w-6 h-6 text-yellow-500" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-900">Countries</p>
-                    <p className="text-gray-600">{product.registeredCountries}</p>
-                  </div>
-                </div>
+                <InfoCard icon={Package} title="Packing" value={product.packing} />
+                <InfoCard icon={Calendar} title="Shelf Life" value={product.shelfLife} />
+                <InfoCard icon={CheckCircle} title="Status" value={product.status} />
+                <InfoCard icon={MapPin} title="Countries" value={product.registeredCountries} />
               </div>
 
-              {/* Dosage */}
+              {/* Dosage Info */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <Users className="w-6 h-6 mr-2 text-yellow-500" />
                   Dosage Information
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <Users className="w-5 h-5 text-blue-500 mt-0.5" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Adults:</p>
-                      <p className="text-gray-600">{product.dosage.adults}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Baby className="w-5 h-5 text-pink-500 mt-0.5" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Children:</p>
-                      <p className="text-gray-600">{product.dosage.children}</p>
-                    </div>
-                  </div>
+                  <DosageCard icon={Users} title="Adults" value={product.dosage.adults} />
+                  <DosageCard icon={Baby} title="Children" value={product.dosage.children} />
                 </div>
               </div>
             </motion.div>
@@ -201,7 +160,7 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Detailed Information */}
+      {/* Extended Info */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -211,101 +170,10 @@ export default function ProductDetail() {
             viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
-            {/* Benefits */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <CheckCircle className="w-6 h-6 mr-2 text-green-500" />
-                Benefits
-              </h3>
-              <ul className="space-y-2">
-                {product.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{benefit}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Indications */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <Shield className="w-6 h-6 mr-2 text-blue-500" />
-                Indications
-              </h3>
-              <ul className="space-y-2">
-                {product.indications.map((indication, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{indication}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Usage Instructions */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <Info className="w-6 h-6 mr-2 text-yellow-500" />
-                Usage Instructions
-              </h3>
-              <ul className="space-y-2">
-                {product.usageInstructions.map((instruction, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{instruction}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Precautions */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <AlertTriangle className="w-6 h-6 mr-2 text-orange-500" />
-                Precautions
-              </h3>
-              <ul className="space-y-2">
-                {product.precautions.map((precaution, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{precaution}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Side Effects */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <AlertTriangle className="w-6 h-6 mr-2 text-red-500" />
-                Side Effects
-              </h3>
-              <ul className="space-y-2">
-                {product.sideEffects.map((effect, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{effect}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Storage */}
-            <motion.div variants={fadeInUp} className="bg-white rounded-xl p-6 shadow-lg">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                <Thermometer className="w-6 h-6 mr-2 text-purple-500" />
-                Storage Instructions
-              </h3>
-              <ul className="space-y-2">
-                {product.storage.map((instruction, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-600">{instruction}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <InfoBlock title="Benefits" icon={CheckCircle} iconColor="text-green-500" items={product.benefits} />
+            <InfoBlock title="Indications" icon={Shield} iconColor="text-blue-500" items={product.indications} />
+            <InfoBlock title="Usage Instructions" icon={Info} iconColor="text-yellow-500" items={product.usageInstructions} />
+            <InfoBlock title="Storage Instructions" icon={Thermometer} iconColor="text-purple-500" items={product.storage} />
           </motion.div>
 
           {/* Disclaimer */}
@@ -327,14 +195,11 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Related Products */}
+      {/* Related */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Related{" "}
-            <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-              Products
-            </span>
+            Related <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">Products</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -348,7 +213,8 @@ export default function ProductDetail() {
                   className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <img
-                    src={relatedProduct.image || "/placeholder.svg"}
+                    src={`/${relatedProduct.image || "placeholder.svg"}`}
+                    onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
                     alt={relatedProduct.name}
                     className="w-full h-32 object-contain mb-4"
                   />
@@ -361,5 +227,49 @@ export default function ProductDetail() {
         </div>
       </section>
     </div>
+  )
+}
+
+// 🔹 Utility Subcomponents
+function InfoCard({ icon: Icon, title, value }: { icon: any, title: string, value: string }) {
+  return (
+    <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
+      <Icon className="w-6 h-6 text-yellow-500" />
+      <div>
+        <p className="text-sm font-semibold text-gray-900">{title}</p>
+        <p className="text-gray-600">{value}</p>
+      </div>
+    </div>
+  )
+}
+
+function DosageCard({ icon: Icon, title, value }: { icon: any, title: string, value: string }) {
+  return (
+    <div className="flex items-start space-x-3">
+      <Icon className="w-5 h-5 text-yellow-500 mt-0.5" />
+      <div>
+        <p className="font-semibold text-gray-900">{title}:</p>
+        <p className="text-gray-600">{value}</p>
+      </div>
+    </div>
+  )
+}
+
+function InfoBlock({ title, icon: Icon, iconColor, items }: { title: string, icon: any, iconColor: string, items: string[] }) {
+  return (
+    <motion.div variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } }} className="bg-white rounded-xl p-6 shadow-lg">
+      <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+        <Icon className={`w-6 h-6 mr-2 ${iconColor}`} />
+        {title}
+      </h3>
+      <ul className="space-y-2">
+        {items.map((item, index) => (
+          <li key={index} className="flex items-start space-x-2">
+            <div className={`w-2 h-2 ${iconColor} rounded-full mt-2 flex-shrink-0`}></div>
+            <p className="text-gray-600">{item}</p>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
   )
 }
