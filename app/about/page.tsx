@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Award, Target, Eye, Heart } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function About() {
   const { t } = useLanguage()

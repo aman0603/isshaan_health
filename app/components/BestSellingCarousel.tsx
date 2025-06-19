@@ -1,38 +1,39 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 const bestSellingProducts = [
   {
     id: 1,
     name: "Remijoint",
     image: "/remi.jpg",
-    link: "/products/remijoint",
+    link: "www.remijoint.com",
   },
   {
     id: 2,
     name: "Bolnol",
     image: "/BolnolTablet.jpg",
-    link: "/products/bolnol",
+    link: "https://bolnol.vercel.app",
   },
   {
     id: 3,
     name: "Montafex",
     image: "/Montafex.jpg",
-    link: "/products/montafex",
+    link: "www.montafex.com",
   },
   {
     id: 4,
     name: "Ispanol",
     image: "/ispanolplus.jpg",
-    link: "/products/ispanol",
+    link: "https://ispanol.uz/",
   },
   {
     id: 5,
     name: "Hepanol",
     image: "/Hepanol.png",
-    link: "/products/hepanol",
+    link: "https://gepanol.uz/",
   },
 ]
 
@@ -65,26 +66,44 @@ export default function BestSellingCarousel() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {visibleProducts.map((product) => (
-            <motion.a
-              key={product.id}
-              href={product.link}
-              className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-40 h-40 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
-            </motion.a>
-          ))}
+          {visibleProducts.map((product) => {
+            const isExternal = product.link.startsWith("http") || product.link.startsWith("www")
+            const href = product.link.startsWith("www") ? `https://${product.link}` : product.link
+
+            const content = (
+              <motion.div
+                className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-40 h-40 object-contain mb-4"
+                />
+                <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
+              </motion.div>
+            )
+
+            return isExternal ? (
+              <a
+                key={product.id}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                {content}
+              </a>
+            ) : (
+              <Link key={product.id} href={href} className="block">
+                {content}
+              </Link>
+            )
+          })}
         </div>
 
-        {/* Dots */}
         <div className="mt-10 flex justify-center gap-3">
           {Array.from({ length: Math.ceil(total / visibleCount) }).map((_, i) => (
             <button

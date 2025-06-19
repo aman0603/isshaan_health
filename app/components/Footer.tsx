@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function Footer() {
   const { t } = useLanguage()

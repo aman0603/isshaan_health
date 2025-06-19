@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Globe, Handshake, TrendingUp, Award, Download, Mail, Phone, MapPin } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function Distributors() {
   const { t } = useLanguage()
