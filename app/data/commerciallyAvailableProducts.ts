@@ -2158,7 +2158,7 @@ export const commerciallyAvailableProducts = [
   {
     id: 80,
     name: "VITASHAN GUMMIES",
-    type: "Gummies",
+    type: "Gummy",
     image: "images/vitashan-gummies.jpg",
     packing: "30 GUMMIES",
     composition: "Multivitamin blend with Biotin, A, C, D3, E, B-complex",
