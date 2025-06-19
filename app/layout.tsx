@@ -7,8 +7,7 @@ import Footer from "./components/Footer"
 
 export const metadata: Metadata = {
   title: "Isshaan Healthcare",
-  description: "Created with v0.dev",
-  generator: "v0.dev",
+  description: "",
 }
 
 export default function RootLayout({
