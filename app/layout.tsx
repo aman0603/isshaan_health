@@ -5,9 +5,25 @@ import { LanguageProvider } from "./contexts/LanguageContext"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Isshaan Healthcare",
-  description: "",
+  description: "Explore Isshaan Healthcare's range of quality pharmaceutical products.",
+  openGraph: {
+    title: "Isshaan Healthcare",
+    description: "Explore Isshaan Healthcare's range of quality pharmaceutical products.",
+    url: "https://isshaan-healthcare.vercel.app/",
+    siteName: "Isshaan Healthcare",
+    images: [
+      {
+        url: "/logo.png", // Replace with your own image path
+        width: 1200,
+        height: 630,
+        alt: "Isshaan Healthcare Logo",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
 }
 
 export default function RootLayout({
