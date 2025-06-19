@@ -1,6 +1,7 @@
 "use client"
 
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import {
   ArrowLeft,
@@ -15,13 +16,20 @@ import {
   Thermometer,
   Info,
 } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
-import { commerciallyAvailableProducts } from "../data/commerciallyAvailableProducts"
+import { useLanguage } from "@/contexts/LanguageContext"
+import { commerciallyAvailableProducts } from "@/data/commerciallyAvailableProducts"
 
-export default function ProductDetail() {
-  const { category, productName } = useParams()
-  const navigate = useNavigate()
+interface PageProps {
+  params: {
+    category: string
+    productName: string
+  }
+}
+
+export default function ProductDetail({ params }: PageProps) {
+  const router = useRouter()
   const { t } = useLanguage()
+  const { category, productName } = params
 
   const product = commerciallyAvailableProducts.find(
     (p) =>
@@ -35,7 +43,7 @@ export default function ProductDetail() {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Product Not Found</h1>
           <Link
-            to="/products/our-products"
+            href="/products/our-products"
             className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
           >
             Back to Our Products
@@ -66,7 +74,7 @@ export default function ProductDetail() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-4">
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => router.back()}
               className="flex items-center space-x-2 text-gray-600 hover:text-yellow-600 transition-colors duration-200"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -74,14 +82,14 @@ export default function ProductDetail() {
             </button>
             <div className="text-gray-400">/</div>
             <Link
-              to="/products/our-products"
+              href="/products/our-products"
               className="text-gray-600 hover:text-yellow-600 transition-colors duration-200"
             >
               Our Products
             </Link>
             <div className="text-gray-400">/</div>
             <Link
-              to={`/products/our-products/${category}`}
+              href={`/products/our-products/${category}`}
               className="text-gray-600 hover:text-yellow-600 transition-colors duration-200"
             >
               {category?.charAt(0).toUpperCase() + category?.slice(1)}
@@ -92,11 +100,10 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Main Product Overview */}
+      {/* Main Product */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -125,7 +132,6 @@ export default function ProductDetail() {
               </div>
             </motion.div>
 
-            {/* Details */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -144,7 +150,6 @@ export default function ProductDetail() {
                 <InfoCard icon={MapPin} title="Countries" value={product.registeredCountries} />
               </div>
 
-              {/* Dosage Info */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <Users className="w-6 h-6 mr-2 text-yellow-500" />
@@ -176,7 +181,6 @@ export default function ProductDetail() {
             <InfoBlock title="Storage Instructions" icon={Thermometer} iconColor="text-purple-500" items={product.storage} />
           </motion.div>
 
-          {/* Disclaimer */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -195,7 +199,7 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Related */}
+      {/* Related Products */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
@@ -209,7 +213,7 @@ export default function ProductDetail() {
               .map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
-                  to={`/products/our-products/${relatedProduct.type.toLowerCase()}/${relatedProduct.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/products/our-products/${relatedProduct.type.toLowerCase()}/${relatedProduct.name.toLowerCase().replace(/\s+/g, "-")}`}
                   className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <img
@@ -230,8 +234,8 @@ export default function ProductDetail() {
   )
 }
 
-// 🔹 Utility Subcomponents
-function InfoCard({ icon: Icon, title, value }: { icon: any, title: string, value: string }) {
+// 🔹 Subcomponents
+function InfoCard({ icon: Icon, title, value }: { icon: any; title: string; value: string }) {
   return (
     <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
       <Icon className="w-6 h-6 text-yellow-500" />
@@ -243,7 +247,7 @@ function InfoCard({ icon: Icon, title, value }: { icon: any, title: string, valu
   )
 }
 
-function DosageCard({ icon: Icon, title, value }: { icon: any, title: string, value: string }) {
+function DosageCard({ icon: Icon, title, value }: { icon: any; title: string; value: string }) {
   return (
     <div className="flex items-start space-x-3">
       <Icon className="w-5 h-5 text-yellow-500 mt-0.5" />
@@ -255,7 +259,7 @@ function DosageCard({ icon: Icon, title, value }: { icon: any, title: string, va
   )
 }
 
-function InfoBlock({ title, icon: Icon, iconColor, items }: { title: string, icon: any, iconColor: string, items: string[] }) {
+function InfoBlock({ title, icon: Icon, iconColor, items }: { title: string; icon: any; iconColor: string; items: string[] }) {
   return (
     <motion.div variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } }} className="bg-white rounded-xl p-6 shadow-lg">
       <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">

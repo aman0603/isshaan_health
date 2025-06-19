@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Search, Package } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
+
 
 import {
   tablet,
@@ -16,7 +17,7 @@ import {
   effervescent,
   herbal,
   neutraceutal,
-} from "../data/genericProducts"
+} from "@/data/genericProducts"
 
 const categoryMap = {
   tablet,

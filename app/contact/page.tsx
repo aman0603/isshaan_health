@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -185,13 +185,10 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{t("address")}</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      123 Pharma Street
+                     G-94, G Block, Sector 63
                       <br />
-                      Medical District
-                      <br />
-                      New York, NY 10001
-                      <br />
-                      United States
+                      Noida
+                   
                     </p>
                   </div>
                 </motion.div>
@@ -209,11 +206,9 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
                     <p className="text-gray-600">
-                      Main: +1 (555) 123-4567
+                      Main: +91 9560797538
                       <br />
-                      Sales: +1 (555) 123-4568
-                      <br />
-                      Support: +1 (555) 123-4569
+                      Sales: +91 9560797336
                     </p>
                   </div>
                 </motion.div>
@@ -231,9 +226,9 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
                     <p className="text-gray-600">
-                      General: info@pharmaex.com
+                      General: info@isshaan.com
                       <br />
-                      Sales: sales@pharmaex.com
+                      Sales: asdada@gmail.com
                       <br />
                       Support: support@pharmaex.com
                     </p>
@@ -255,7 +250,7 @@ export default function Contact() {
                     <p className="text-gray-600">
                       Monday - Friday: 9:00 AM - 6:00 PM
                       <br />
-                      Saturday: 9:00 AM - 2:00 PM
+                      Saturday: 9:00 AM - 6:00 PM
                       <br />
                       Sunday: Closed
                     </p>
@@ -291,8 +286,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="rounded-2xl overflow-hidden shadow-2xl"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1635959934716!5m2!1sen!2sus"
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.3979441381575!2d77.387270275802!3d28.617833075672884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cefed58b57115%3A0x3f4a8bf5a94daaaa!2sIsshaan!5e0!3m2!1sen!2sin!4v1750330473540!5m2!1sen!2sin"
               width="100%"
               height="400"
               style={{ border: 0 }}

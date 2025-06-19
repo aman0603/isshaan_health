@@ -1,18 +1,22 @@
 "use client"
 
-import { useParams, Link } from "react-router-dom"
+import Link from "next/link"
+import { useParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { ArrowLeft, Package, MapPin, Calendar, CheckCircle } from "lucide-react"
-import { useLanguage } from "../contexts/LanguageContext"
-import { commerciallyAvailableProducts } from "../data/commerciallyAvailableProducts"
+import { useLanguage } from "@/contexts/LanguageContext"
+import { commerciallyAvailableProducts } from "@/data/commerciallyAvailableProducts"
 
 export default function CategoryProducts() {
-  const { category } = useParams()
+  const router = useRouter()
+  const params = useParams()
+  const { category } = params
   const { t } = useLanguage()
 
-  const categoryName = category?.charAt(0).toUpperCase() + category?.slice(1)
+  const categoryName = typeof category === "string" ? category.charAt(0).toUpperCase() + category.slice(1) : ""
+
   const categoryProducts = commerciallyAvailableProducts.filter(
-    (product) => product.type.toLowerCase() === category?.toLowerCase(),
+    (product) => product.type.toLowerCase() === (category as string)?.toLowerCase()
   )
 
   const fadeInUp = {
@@ -35,20 +39,20 @@ export default function CategoryProducts() {
       <section className="py-8 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-4">
-            <Link
-              to="/products/our-products"
+            <button
+              onClick={() => router.back()}
               className="flex items-center space-x-2 text-gray-600 hover:text-yellow-600 transition-colors duration-200"
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Our Products</span>
-            </Link>
+            </button>
             <div className="text-gray-400">/</div>
             <span className="text-gray-900 font-semibold">{categoryName}</span>
           </div>
         </div>
       </section>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="py-20 bg-gradient-to-br from-yellow-50 via-white to-yellow-100 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-200 rounded-full opacity-20 animate-pulse"></div>
@@ -80,7 +84,7 @@ export default function CategoryProducts() {
         </div>
       </section>
 
-      {/* Products Grid */}
+      {/* Product Grid */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -89,7 +93,7 @@ export default function CategoryProducts() {
             animate="animate"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {categoryProducts.map((product, index) => (
+            {categoryProducts.map((product) => (
               <motion.div
                 key={product.id}
                 variants={fadeInUp}
@@ -100,6 +104,7 @@ export default function CategoryProducts() {
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full h-48 object-cover"
+                    onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
                   />
                   <div className="absolute top-4 right-4">
                     <span
@@ -151,7 +156,7 @@ export default function CategoryProducts() {
                       </div>
                     </div>
                     <Link
-                      to={`/products/our-products/${product.type.toLowerCase()}/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      href={`/products/our-products/${product.type.toLowerCase()}/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
                       className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 px-4 rounded-lg font-semibold text-center block hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
                     >
                       View Details

@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
 
@@ -44,19 +44,13 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow-400">Quick Links</h3>
             <div className="space-y-2">
-              <Link to="/" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link href="/" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("home")}
               </Link>
-              <Link
-                to="/about"
-                className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm"
-              >
+              <Link href="/about" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("about")}
               </Link>
-              {/* <Link
-                to="/distributors"
-                className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm"
-              >
+              {/* <Link href="/distributors" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("distributors")}
               </Link> */}
             </div>
@@ -66,10 +60,10 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-yellow-400">Products</h3>
             <div className="space-y-2">
-              <Link to="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link href="/products/generic" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("genericProducts")}
               </Link>
-              <Link to="/products/our-products" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
+              <Link href="/products/our-products" className="block text-gray-300 hover:text-yellow-400 transition-colors duration-200 text-sm">
                 {t("Our Products")}
               </Link>
             </div>
@@ -100,8 +94,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-    
       </div>
     </footer>
   )

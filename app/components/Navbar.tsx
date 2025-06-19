@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useLanguage } from "../contexts/LanguageContext"
@@ -12,7 +13,7 @@ export default function Navbar() {
   const [showLanguages, setShowLanguages] = useState(false)
   const [showProductsDropdown, setShowProductsDropdown] = useState(false)
   const { language, setLanguage, t } = useLanguage()
-  const location = useLocation()
+  const pathname = usePathname()
 
   const languages = [
     { code: "en", name: "English", flag: "🇺🇸" },
@@ -22,9 +23,7 @@ export default function Navbar() {
   ]
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -41,9 +40,7 @@ export default function Navbar() {
         { name: "Our Products", path: "/products/our-products" },
       ],
     },
-    // { name: t("distributors"), path: "/distributors" },
     { name: t("contact"), path: "/contact" },
-    // { name: t("career"), path: "/career" },
   ]
 
   return (
@@ -57,12 +54,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img
-              src="/logo.png"
-              alt="Isshaan Healthcare Logo"
-              className="w-25 h-25 object-contain rounded-lg"
-            />
+          <Link href="/" className="flex items-center space-x-2">
+            <img src="/logo.png" alt="Isshaan Healthcare Logo" className="w-24 h-12 object-contain" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -76,8 +69,8 @@ export default function Navbar() {
                     onMouseLeave={() => setShowProductsDropdown(false)}
                   >
                     <button
-                      className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center space-x-1 ${
-                        location.pathname.startsWith("/products")
+                      className={`px-3 py-2 text-sm font-medium flex items-center space-x-1 transition-colors duration-200 ${
+                        pathname.startsWith("/products")
                           ? "text-yellow-600"
                           : "text-gray-700 hover:text-yellow-600"
                       }`}
@@ -97,11 +90,9 @@ export default function Navbar() {
                           {item.dropdownItems?.map((dropdownItem) => (
                             <Link
                               key={dropdownItem.path}
-                              to={dropdownItem.path}
-                              className={`block px-4 py-2 text-sm hover:bg-yellow-50 transition-colors duration-200 ${
-                                location.pathname === dropdownItem.path
-                                  ? "text-yellow-600 bg-yellow-50"
-                                  : "text-gray-700"
+                              href={dropdownItem.path}
+                              className={`block px-4 py-2 text-sm transition-colors duration-200 hover:bg-yellow-50 ${
+                                pathname === dropdownItem.path ? "text-yellow-600 bg-yellow-50" : "text-gray-700"
                               }`}
                             >
                               {dropdownItem.name}
@@ -113,13 +104,13 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <Link
-                    to={item.path}
+                    href={item.path}
                     className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                      location.pathname === item.path ? "text-yellow-600" : "text-gray-700 hover:text-yellow-600"
+                      pathname === item.path ? "text-yellow-600" : "text-gray-700 hover:text-yellow-600"
                     }`}
                   >
                     {item.name}
-                    {location.pathname === item.path && (
+                    {pathname === item.path && (
                       <motion.div
                         layoutId="activeTab"
                         className="absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-600"
@@ -131,13 +122,13 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Language Switcher & Mobile Menu */}
+          {/* Language Switcher & Mobile Toggle */}
           <div className="flex items-center space-x-4">
             {/* Language Switcher */}
             <div className="relative">
               <button
                 onClick={() => setShowLanguages(!showLanguages)}
-                className="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-yellow-600 transition-colors duration-200"
+                className="flex items-center space-x-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-yellow-600"
               >
                 <span>{languages.find((lang) => lang.code === language)?.flag}</span>
                 <span className="hidden sm:inline">{languages.find((lang) => lang.code === language)?.name}</span>
@@ -159,7 +150,7 @@ export default function Navbar() {
                           setLanguage(lang.code as any)
                           setShowLanguages(false)
                         }}
-                        className={`w-full text-left px-4 py-2 text-sm hover:bg-yellow-50 transition-colors duration-200 flex items-center space-x-2 ${
+                        className={`w-full text-left px-4 py-2 text-sm flex items-center space-x-2 hover:bg-yellow-50 ${
                           language === lang.code ? "text-yellow-600 bg-yellow-50" : "text-gray-700"
                         }`}
                       >
@@ -175,7 +166,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-yellow-600 transition-colors duration-200"
+              className="md:hidden p-2 text-gray-700 hover:text-yellow-600"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -200,10 +191,10 @@ export default function Navbar() {
                         {item.dropdownItems?.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.path}
-                            to={dropdownItem.path}
+                            href={dropdownItem.path}
                             onClick={() => setIsOpen(false)}
-                            className={`block px-6 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                              location.pathname === dropdownItem.path
+                            className={`block px-6 py-2 text-sm rounded-lg transition-colors duration-200 ${
+                              pathname === dropdownItem.path
                                 ? "text-yellow-600 bg-yellow-50"
                                 : "text-gray-600 hover:text-yellow-600 hover:bg-yellow-50"
                             }`}
@@ -214,10 +205,10 @@ export default function Navbar() {
                       </div>
                     ) : (
                       <Link
-                        to={item.path}
+                        href={item.path}
                         onClick={() => setIsOpen(false)}
                         className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                          location.pathname === item.path
+                          pathname === item.path
                             ? "text-yellow-600 bg-yellow-50"
                             : "text-gray-700 hover:text-yellow-600 hover:bg-yellow-50"
                         }`}

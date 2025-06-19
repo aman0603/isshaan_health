@@ -3,9 +3,9 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft, ChevronRight, Search } from "lucide-react"
-import { Link } from "react-router-dom"
-import { useLanguage } from "../contexts/LanguageContext"
-import { commerciallyAvailableProducts } from "../data/commerciallyAvailableProducts"
+import Link from "next/link"
+import { useLanguage } from "@/contexts/LanguageContext"
+import { commerciallyAvailableProducts } from "@/data/commerciallyAvailableProducts"
 
 const PRODUCTS_PER_PAGE = 15
 
@@ -154,6 +154,7 @@ export default function OurProducts() {
                     src={`/${product.image || "placeholder.svg"}`}
                     alt={product.name}
                     className="w-full h-48 object-cover"
+                    onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
                   />
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">
@@ -175,7 +176,7 @@ export default function OurProducts() {
                   </div>
                   <div className="pt-4 mt-auto border-t border-gray-100">
                     <Link
-                      to={`/products/our-products/${product.type.toLowerCase()}/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      href={`/products/our-products/${product.type.toLowerCase()}/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
                       className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white py-2 px-4 rounded-lg font-semibold text-center block hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
                     >
                       View Details
