@@ -29,12 +29,14 @@ interface PageProps {
 export default function ProductDetail({ params }: PageProps) {
   const router = useRouter()
   const { t } = useLanguage()
-  const { category, productName } = params
+  // Safely access params to avoid direct property access error in newer Next.js versions
+  const category = params.category || '';
+  const productName = params.productName || '';
 
   const product = commerciallyAvailableProducts.find(
     (p) =>
-      p.type.toLowerCase() === category?.toLowerCase() &&
-      p.name.toLowerCase().replace(/\s+/g, "-") === productName?.toLowerCase()
+      p.type.toLowerCase() === category.toLowerCase() &&
+      p.name.toLowerCase().replace(/\s+/g, "-") === productName.toLowerCase()
   )
 
   if (!product) {
@@ -89,10 +91,10 @@ export default function ProductDetail({ params }: PageProps) {
             </Link>
             <div className="text-gray-400">/</div>
             <Link
-              href={`/products/our-products/${category}`}
+              href={`/products/our-products/${category ? category : 'unknown'}`}
               className="text-gray-600 hover:text-yellow-600 transition-colors duration-200"
             >
-              {category?.charAt(0).toUpperCase() + category?.slice(1)}
+              {category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Unknown'}
             </Link>
             <div className="text-gray-400">/</div>
             <span className="text-gray-900 font-semibold">{product.name}</span>
@@ -156,8 +158,8 @@ export default function ProductDetail({ params }: PageProps) {
                   Dosage Information
                 </h3>
                 <div className="space-y-3">
-                  <DosageCard icon={Users} title="Adults" value={product.dosage.adults} />
-                  <DosageCard icon={Baby} title="Children" value={product.dosage.children} />
+                  <DosageCard icon={Users} title="Adults" value={product.dosage.adults || ""} />
+                  <DosageCard icon={Baby} title="Children" value={product.dosage.children || ""} />
                 </div>
               </div>
             </motion.div>
@@ -175,10 +177,10 @@ export default function ProductDetail({ params }: PageProps) {
             viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           >
-            <InfoBlock title="Benefits" icon={CheckCircle} iconColor="text-green-500" items={product.benefits} />
-            <InfoBlock title="Indications" icon={Shield} iconColor="text-blue-500" items={product.indications} />
-            <InfoBlock title="Usage Instructions" icon={Info} iconColor="text-yellow-500" items={product.usageInstructions} />
-            <InfoBlock title="Storage Instructions" icon={Thermometer} iconColor="text-purple-500" items={product.storage} />
+            <InfoBlock title="Benefits" icon={CheckCircle} iconColor="text-green-500" items={Array.isArray(product.benefits) ? product.benefits : (product.benefits ? [product.benefits] : [])} />
+            <InfoBlock title="Indications" icon={Shield} iconColor="text-blue-500" items={Array.isArray(product.indications) ? product.indications : (product.indications ? [product.indications] : [])} />
+            <InfoBlock title="Usage Instructions" icon={Info} iconColor="text-yellow-500" items={Array.isArray(product.usageInstructions) ? product.usageInstructions : (product.usageInstructions ? [product.usageInstructions] : [])} />
+            <InfoBlock title="Storage Instructions" icon={Thermometer} iconColor="text-purple-500" items={Array.isArray(product.storage) ? product.storage : (product.storage ? [product.storage] : [])} />
           </motion.div>
 
           <motion.div
@@ -213,17 +215,17 @@ export default function ProductDetail({ params }: PageProps) {
               .map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
-                  href={`/products/our-products/${relatedProduct.type.toLowerCase()}/${relatedProduct.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/products/our-products/${(relatedProduct.type || 'unknown').toLowerCase()}/${(relatedProduct.name || 'unnamed-product').toLowerCase().replace(/\s+/g, "-")}`}
                   className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2"
                 >
                   <img
                     src={`/${relatedProduct.image || "placeholder.svg"}`}
                     onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
-                    alt={relatedProduct.name}
+                    alt={relatedProduct.name || "Related Product"}
                     className="w-full h-32 object-contain mb-4"
                   />
-                  <h3 className="font-semibold text-gray-900 mb-2">{relatedProduct.name}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{relatedProduct.type}</p>
+                  <h3 className="font-semibold text-gray-900 mb-2">{relatedProduct.name || "Unnamed Product"}</h3>
+                  <p className="text-sm text-gray-600 mb-3">{relatedProduct.type || "Unknown Type"}</p>
                   <div className="text-yellow-600 font-semibold text-sm">View Details →</div>
                 </Link>
               ))}

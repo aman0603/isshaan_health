@@ -14,6 +14,14 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import HeroVideoCarousel from "@/components/HeroVideoCarousel"
 import BestSellingCarousel from "@/components/BestSellingCarousel"
 import OurManufacturing from "@/components/OurManufacturing"
+import {
+  WeDeliverSection,
+  OurServicesSection,
+  ProductsSection,
+  ExploreProductsSection,
+  SagaImpactSection,
+  PartnerReasonsSection
+} from "../components/HomeSections"
 
 export default function Home() {
   const { t } = useLanguage()
@@ -133,8 +141,15 @@ export default function Home() {
       {/* Best Selling Carousel */}
       <BestSellingCarousel />
 
-      {/* Our Manufacturing Section */}
+{/* Our Manufacturing Section */}
       <OurManufacturing />
+      {/* New Sections from Saga Lifesciences */}
+      <WeDeliverSection />
+      <OurServicesSection />
+      <ProductsSection />
+      <ExploreProductsSection />
+      <SagaImpactSection />
+      <PartnerReasonsSection />
 {/* Distributor CTA Section (Restored) */}
 <section className="py-20 bg-gradient-to-r from-yellow-500 to-yellow-600 relative overflow-hidden">
   <div className="absolute inset-0 bg-black opacity-10"></div>
