@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const WeDeliverSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">We Deliver</h2>
@@ -127,7 +127,7 @@ export const OurServicesSection = () => {
 
 export const ProductsSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
@@ -210,11 +210,11 @@ export const ProductsSection = () => {
 
 export const ExploreProductsSection = () => {
   return (
-    <section className="py-20 bg-blue-600 text-white">
+    <section className="py-20 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Explore Our Products Portfolio</h2>
         <p className="text-xl mb-8 max-w-3xl mx-auto">Saga offers a diverse product range, including tablets, capsules, syrups, powders, liquids, injections, and ointments to meet the varied needs and specifications of its partners.</p>
-        <Link href="/products/our-products" className="inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300">Discover Our Products</Link>
+        <Link href="/products/our-products" className="inline-block bg-white text-yellow-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-lg transition duration-300">Discover Our Products</Link>
       </div>
     </section>
   );
@@ -258,7 +258,7 @@ export const SagaImpactSection = () => {
 
 export const PartnerReasonsSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Making a Difference</h2>

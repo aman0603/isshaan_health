@@ -144,10 +144,10 @@ export default function Home() {
 {/* Our Manufacturing Section */}
       <OurManufacturing />
       {/* New Sections from Saga Lifesciences */}
-      <WeDeliverSection />
+      <WeDeliverSection / >
       <OurServicesSection />
       <ProductsSection />
-      <ExploreProductsSection />
+      {/* <ExploreProductsSection /> */}
       <SagaImpactSection />
       <PartnerReasonsSection />
 {/* Distributor CTA Section (Restored) */}
